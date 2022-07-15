@@ -2,11 +2,11 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "source/server.ts",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node source/index.ts",
-    "start:dev": "ts-node-dev --respawn source/index.ts"
+    "start": "ts-node source/server.ts",
+    "start:dev": "ts-node-dev --respawn source/server.ts"
   },
   "keywords": [],
   "author": "",
