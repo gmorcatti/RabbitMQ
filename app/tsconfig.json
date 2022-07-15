@@ -1,0 +1,29 @@
+
+
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "outDir": "./dist", /* Specify an output folder for all emitted files. */
+    "baseUrl": "source", /* Specify the base directory to resolve non-relative module names. */
+    "paths": {
+      "~config/*": ["config/*"],
+      "~infra/*": ["infra/*"],
+      "~src/*": ["*"]
+    }, /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "sourceMap": true,
+    "sourceRoot": "/",
+    "experimentalDecorators": true, /* Enable experimental support for TC39 stage 2 draft decorators. */
+    "emitDecoratorMetadata": true, /* Emit design-type metadata for decorated declarations in source files. */
+    "noEmitOnError": true, /* Disable emitting files if any type checking errors are reported. */
+    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    "noImplicitAny": true, /* Enable error reporting for expressions and declarations with an implied `any` type.. */
+    "noUnusedLocals": true, /* Enable error reporting when a local variables aren't read. */
+    "noUnusedParameters": true, /* Raise an error when a function parameter isn't read */
+  },
+  "include": ["source/**/*.ts"]
+}

@@ -5,8 +5,8 @@
   "main": "source/server.ts",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node source/server.ts",
-    "start:dev": "ts-node-dev --respawn source/server.ts"
+    "start": "ts-node -r tsconfig-paths/register source/server.ts",
+    "start:dev": "ts-node-dev -r tsconfig-paths/register --respawn --poll --transpile-only  source/server.ts"
   },
   "keywords": [],
   "author": "",
