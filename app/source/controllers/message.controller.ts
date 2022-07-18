@@ -4,7 +4,7 @@ import env from '~config/env'
 import RabbitMQServer from '~infra/rabbitmq'
 
 export class MessageController {
-  async sendMessage (req: Request, res: Response) {
+  async send (req: Request, res: Response) {
     const server = new RabbitMQServer(env.rabbitMQ.uri)
     await server.start()
 
@@ -19,7 +19,7 @@ export class MessageController {
     return res.send(req.body)
   }
 
-  async consumeMessage (req: Request, res: Response) {
+  async consume (req: Request, res: Response) {
     const server = new RabbitMQServer(env.rabbitMQ.uri)
     await server.start()
 

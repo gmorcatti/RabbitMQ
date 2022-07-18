@@ -7,7 +7,7 @@ const router = Router()
 
 const messageController = new MessageController()
 
-router.post('/send-message', messageController.sendMessage)
-router.get('/read-message', messageController.consumeMessage)
+router.post('/send-message', messageController.send)
+router.get('/read-message', messageController.consume)
 
 export default router
