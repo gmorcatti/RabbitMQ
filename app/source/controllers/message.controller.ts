@@ -8,6 +8,10 @@ export class MessageController {
     const server = new RabbitMQServer(env.rabbitMQ.uri)
     await server.start()
 
+    await server.publishInQueue('test', JSON.stringify({
+      mandou: 'sim',
+    }))
+
     return res.send(req.body)
   }
 }
