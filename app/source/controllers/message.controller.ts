@@ -12,6 +12,10 @@ export class MessageController {
       mandou: 'sim',
     }))
 
+    await server.publishInExchange('amq.direct', 'rota', JSON.stringify({
+      mandou: 'sim',
+    }))
+
     return res.send(req.body)
   }
 }
