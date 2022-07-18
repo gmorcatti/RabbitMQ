@@ -18,4 +18,15 @@ export class MessageController {
 
     return res.send(req.body)
   }
+
+  async consumeMessage (req: Request, res: Response) {
+    const server = new RabbitMQServer(env.rabbitMQ.uri)
+    await server.start()
+
+    await server.consume('test', (message) => {
+      console.log(message?.content.toString(), new Date())
+    })
+
+    return res.send('OK')
+  }
 }
