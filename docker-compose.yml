@@ -10,11 +10,15 @@ services:
       - ./app:/app-node
     networks:
       - application
+    depends_on:
+      - rabbitmq
 
   rabbitmq:
     image: "rabbitmq:3.8-management-alpine"
-    container_name: nodejs-rabbitmq-rabbitmq
+    container_name: nodejs-rabbitmq
     hostname: rabbitmq
+    networks:
+      - application
     ports:
       - "15672:15672"
       - "5672:5672"
