@@ -12,4 +12,8 @@ export default class RabbitMQServer {
     this.connection = await connect(this.uri)
     this.channel = await this.connection.createChannel()
   }
+
+  async publishInQueue (queue: string, message: string) {
+    return this.channel.sendToQueue(queue, Buffer.from(message))
+  }
 }
