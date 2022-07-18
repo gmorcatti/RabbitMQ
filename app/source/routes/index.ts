@@ -1,17 +1,12 @@
 
-import { Request, Response, Router } from 'express'
+import { Router } from 'express'
 
-import env from '~config/env'
-
-import RabbitMQServer from '~infra/rabbitmq'
+import { MessageController } from '~controllers/message.controller'
 
 const router = Router()
 
-router.post('/send-message', async (req: Request, res: Response) => {
-  const server = new RabbitMQServer(env.rabbitMQ.uri)
-  await server.start()
+const messageController = new MessageController()
 
-  return res.send(req.body)
-})
+router.post('/send-message', messageController.sendMessage)
 
 export default router
