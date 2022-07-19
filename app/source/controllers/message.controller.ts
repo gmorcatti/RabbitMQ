@@ -20,7 +20,7 @@ export class MessageController {
   }
 
   async createQueue (req: Request, res: Response) {
-    await createQueueService.handle(req.body.name)
+    await createQueueService.handle(req.body.name, req.body.options)
     return res.send('OK')
   }
 }
