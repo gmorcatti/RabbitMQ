@@ -9,5 +9,6 @@ const messageController = new MessageController()
 
 router.post('/send-message', messageController.send)
 router.get('/read-message', messageController.consume)
+router.get('/create-queue', messageController.createQueue)
 
 export default router
