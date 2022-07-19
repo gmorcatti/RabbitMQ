@@ -1,4 +1,4 @@
-import { Channel, connect, Connection, ConsumeMessage } from 'amqplib'
+import { Channel, connect, Connection, ConsumeMessage, Options } from 'amqplib'
 
 export default class RabbitMQServer {
   private connection: Connection
@@ -28,5 +28,9 @@ export default class RabbitMQServer {
       callback(message)
       this.channel.ack(message)
     })
+  }
+
+  async createQueue (queue: string, options?: Options.AssertQueue) {
+    return this.channel.assertQueue(queue, options)
   }
 }
