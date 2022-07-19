@@ -1,32 +1,18 @@
 import { Request, Response } from 'express'
 
-import env from '~config/env'
-import RabbitMQServer from '~infra/rabbitmq'
+import { ConsumeMessageService } from '~src/services/consumeMessage.service'
+import { SendMessageService } from '~src/services/sendMessage.service'
 
+const sendMessageService = new SendMessageService()
+const consumeMessageService = new ConsumeMessageService()
 export class MessageController {
   async send (req: Request, res: Response) {
-    const server = new RabbitMQServer(env.rabbitMQ.uri)
-    await server.start()
-
-    await server.publishInQueue('test', JSON.stringify({
-      mandou: 'sim',
-    }))
-
-    await server.publishInExchange('amq.direct', 'rota', JSON.stringify({
-      mandou: 'sim',
-    }))
-
+    sendMessageService.handle()
     return res.send(req.body)
   }
 
-  async consume (req: Request, res: Response) {
-    const server = new RabbitMQServer(env.rabbitMQ.uri)
-    await server.start()
-
-    await server.consume('test', (message) => {
-      console.log(message?.content.toString(), new Date())
-    })
-
+  async consume (_: Request, res: Response) {
+    consumeMessageService.handle()
     return res.send('OK')
   }
 }
