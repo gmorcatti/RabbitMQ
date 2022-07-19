@@ -10,17 +10,17 @@ const createQueueService = new CreateQueueService()
 
 export class MessageController {
   async send (req: Request, res: Response) {
-    sendMessageService.handle()
+    await sendMessageService.handle()
     return res.send(req.body)
   }
 
   async consume (_: Request, res: Response) {
-    consumeMessageService.handle()
+    await consumeMessageService.handle()
     return res.send('OK')
   }
 
   async createQueue (req: Request, res: Response) {
-    createQueueService.handle(req.body.name)
+    await createQueueService.handle(req.body.name)
     return res.send('OK')
   }
 }
