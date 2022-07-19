@@ -1,6 +1,7 @@
-import express from 'express'
-
 import 'dotenv/config'
+import 'express-async-errors'
+
+import express from 'express'
 
 import router from '~src/routes'
 
