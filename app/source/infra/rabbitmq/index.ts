@@ -1,5 +1,7 @@
 import { Channel, connect, Connection, ConsumeMessage, Options } from 'amqplib'
 
+import { ExchangeType } from '~config/types/queue'
+
 export default class RabbitMQServer {
   private connection: Connection
   private channel: Channel
@@ -32,5 +34,9 @@ export default class RabbitMQServer {
 
   async createQueue (queue: string, options?: Options.AssertQueue) {
     return this.channel.assertQueue(queue, options)
+  }
+
+  async createExchange (exchange: string, type: ExchangeType, options?: Options.AssertExchange) {
+    return this.channel.assertExchange(exchange, type, options)
   }
 }
