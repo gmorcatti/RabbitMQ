@@ -41,13 +41,19 @@ export class MessageController {
   }
 
   async createQueue (req: Request, res: Response) {
-    await createQueueService.handle(req.body.name, req.body.options)
-    return res.send('OK')
+    const { name, options } = req.body
+
+    await createQueueService.handle(name, options)
+
+    return res.sendStatus(200)
   }
 
   async createExchange (req: Request, res: Response) {
-    await createExchangeService.handle(req.body.name, req.body.type, req.body.options)
-    return res.send('OK')
+    const { name, type, options } = req.body
+
+    await createExchangeService.handle(name, type, options)
+
+    return res.sendStatus(200)
   }
 
   async bindQueueToExchange (req: Request, res: Response) {
