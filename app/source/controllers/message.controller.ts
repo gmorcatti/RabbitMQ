@@ -1,5 +1,7 @@
 import { Request, Response } from 'express'
 
+import { BindQueueToExchangeService } from '~src/services/bindQueueToExchange.service'
+
 import { ConsumeMessageService } from '~src/services/consumeMessage.service'
 import { CreateExchangeService } from '~src/services/createExchange.service'
 import { CreateQueueService } from '~src/services/createQueue.service'
@@ -9,6 +11,7 @@ const sendMessageService = new SendMessageService()
 const consumeMessageService = new ConsumeMessageService()
 const createQueueService = new CreateQueueService()
 const createExchangeService = new CreateExchangeService()
+const bindQueueToExchangeService = new BindQueueToExchangeService()
 
 export class MessageController {
   async send (req: Request, res: Response) {
@@ -29,5 +32,13 @@ export class MessageController {
   async createExchange (req: Request, res: Response) {
     await createExchangeService.handle(req.body.name, req.body.type, req.body.options)
     return res.send('OK')
+  }
+
+  async bindQueueToExchange (req: Request, res: Response) {
+    const { queue, exchange } = req.body
+
+    await bindQueueToExchangeService.handle(queue, exchange)
+
+    return res.sendStatus(200)
   }
 }
