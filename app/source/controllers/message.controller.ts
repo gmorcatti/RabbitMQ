@@ -32,9 +32,12 @@ export class MessageController {
     return res.sendStatus(200)
   }
 
-  async consume (_: Request, res: Response) {
-    await consumeMessageService.handle()
-    return res.send('OK')
+  async consume (req: Request, res: Response) {
+    const { queue } = req.body
+
+    await consumeMessageService.handle(queue)
+
+    return res.sendStatus(200)
   }
 
   async createQueue (req: Request, res: Response) {
