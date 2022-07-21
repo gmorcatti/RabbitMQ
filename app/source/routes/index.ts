@@ -7,7 +7,7 @@ const router = Router()
 
 const messageController = new MessageController()
 
-router.post('/send-message', messageController.send)
+router.post('/send-message-to-queue', messageController.sendToQueue)
 router.get('/read-message', messageController.consume)
 router.post('/create-queue', messageController.createQueue)
 router.post('/create-exchange', messageController.createExchange)

@@ -5,18 +5,21 @@ import { BindQueueToExchangeService } from '~src/services/bindQueueToExchange.se
 import { ConsumeMessageService } from '~src/services/consumeMessage.service'
 import { CreateExchangeService } from '~src/services/createExchange.service'
 import { CreateQueueService } from '~src/services/createQueue.service'
-import { SendMessageService } from '~src/services/sendMessage.service'
+import { SendMessageToQueueService } from '~src/services/sendMessageToQueue.service'
 
-const sendMessageService = new SendMessageService()
+const sendMessageToQueueService = new SendMessageToQueueService()
 const consumeMessageService = new ConsumeMessageService()
 const createQueueService = new CreateQueueService()
 const createExchangeService = new CreateExchangeService()
 const bindQueueToExchangeService = new BindQueueToExchangeService()
 
 export class MessageController {
-  async send (req: Request, res: Response) {
-    await sendMessageService.handle()
-    return res.send(req.body)
+  async sendToQueue (req: Request, res: Response) {
+    const { queue, message } = req.body
+
+    await sendMessageToQueueService.handle(queue, message)
+
+    return res.sendStatus(200)
   }
 
   async consume (_: Request, res: Response) {
