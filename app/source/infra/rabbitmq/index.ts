@@ -39,4 +39,8 @@ export default class RabbitMQServer {
   async createExchange (exchange: string, type: ExchangeType, options?: Options.AssertExchange) {
     return this.channel.assertExchange(exchange, type, options)
   }
+
+  async bindQueueToExchange (queue: string, exchange: string, pattern = '') {
+    return this.channel.bindQueue(queue, exchange, pattern)
+  }
 }
