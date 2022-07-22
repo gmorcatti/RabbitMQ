@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 
-import { BindQueueToExchangeService } from '~src/services/bindQueueToExchange.service'
+import { BindQueueToExchangeService } from '~services/messages/bindQueueToExchange.service'
 
-import { ConsumeMessageService } from '~src/services/consumeMessage.service'
-import { CreateExchangeService } from '~src/services/createExchange.service'
-import { CreateQueueService } from '~src/services/createQueue.service'
-import { SendMessageToExchangeService } from '~src/services/sendMessageToExchange.service'
-import { SendMessageToQueueService } from '~src/services/sendMessageToQueue.service'
+import { ConsumeMessageService } from '~services/messages/consumeMessage.service'
+import { CreateExchangeService } from '~services/messages/createExchange.service'
+import { CreateQueueService } from '~services/messages/createQueue.service'
+import { SendMessageToExchangeService } from '~services/messages/sendMessageToExchange.service'
+import { SendMessageToQueueService } from '~services/messages/sendMessageToQueue.service'
 
 const sendMessageToQueueService = new SendMessageToQueueService()
 const sendMessageToExchangeService = new SendMessageToExchangeService()

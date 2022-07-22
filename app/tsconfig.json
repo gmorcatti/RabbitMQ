@@ -14,6 +14,7 @@
       "~config/*": ["config/*"],
       "~infra/*": ["infra/*"],
       "~controllers/*": ["controllers/*"],
+      "~services/*": ["services/*"],
       "~src/*": ["*"]
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
     "sourceMap": true,
