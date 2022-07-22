@@ -45,4 +45,8 @@ export default class RabbitMQServer {
   async bindQueueToExchange (queue: string, exchange: string, pattern = '') {
     return this.channel.bindQueue(queue, exchange, pattern)
   }
+
+  async prefetch () {
+    return this.channel.prefetch(1)
+  }
 }
