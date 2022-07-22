@@ -1,25 +1,18 @@
 import RabbitMQServer from '.'
 
 import env from '~config/env'
-
-const consumeCallbacks = {
-  'queue-test': (input: object) => {
-    console.log('O Input é:', input)
-  },
-  'queue-test-2': (input: object) => {
-    console.log('=======')
-    console.log(input)
-    console.log('=======')
-  },
-}
+import { Jobs } from '~src/jobs'
 
 export const consumer = async () => {
   const server = new RabbitMQServer(env.rabbitMQ.uri)
   await server.start()
 
-  const queues = Object.entries(consumeCallbacks)
+  const queues = Object.entries(Jobs)
 
-  queues.forEach(([name, handler]) => {
+  const ConsumePromises = queues.map(async ([name, handler]) => {
+    await server.createQueue(name)
     server.consume(name, handler)
   })
+
+  await Promise.all(ConsumePromises)
 }
