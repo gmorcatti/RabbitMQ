@@ -9,9 +9,11 @@ export const consumer = async () => {
 
   const queues = Object.entries(Jobs)
 
+  await server.prefetch()
+
   const ConsumePromises = queues.map(async ([name, handler]) => {
     await server.createQueue(name)
-    server.consume(name, handler)
+    await server.consume(name, handler)
   })
 
   await Promise.all(ConsumePromises)
