@@ -21,15 +21,15 @@ export default class RabbitMQServer {
     return this.channel.publish(exchange, routingKey, Buffer.from(message))
   }
 
-  async consume (queue: string, callback: (message: object) => void) {
-    return this.channel.consume(queue, (message: ConsumeMessage | null) => {
+  async consume (queue: string, callback: (message: object) => Promise<void>) {
+    return this.channel.consume(queue, async (message: ConsumeMessage | null) => {
       if (!message) {
         return console.error('Message not found')
       }
 
       const parsedMessage = JSON.parse(message?.content.toString())
 
-      callback(parsedMessage)
+      await callback(parsedMessage)
       this.channel.ack(message)
     })
   }
