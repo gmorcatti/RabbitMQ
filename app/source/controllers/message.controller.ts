@@ -32,10 +32,8 @@ export class MessageController {
     return res.sendStatus(200)
   }
 
-  async consume (req: Request, res: Response) {
-    const { queue } = req.body
-
-    await consumeMessageService.handle(queue)
+  async consume (_: Request, res: Response) {
+    await consumeMessageService.handle()
 
     return res.sendStatus(200)
   }
