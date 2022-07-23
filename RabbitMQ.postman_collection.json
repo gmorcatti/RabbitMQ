@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "cc66fc69-218c-4735-94d2-f423f67da1a6",
+		"name": "Rabbit Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20833509"
+	},
+	"item": [
+		{
+			"name": "Create Queue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"queue-test-2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/create-queue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create-queue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Exchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"allMessages\",\n    \"type\": \"direct\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/create-exchange",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create-exchange"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read Message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/read-message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"read-message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message To Queue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"queue\": \"queue-test-2\",\n    \"message\": {\n        \"usersId\": [\"2\", \"6\"]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/send-message-to-queue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"send-message-to-queue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message To Exchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"exchange\": \"allMessages\",\n    \"message\": {\n        \"usersId\": [\"1\", \"2\", \"3\"]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/send-message-to-exchange",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"send-message-to-exchange"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bind Queue to Exchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"queue\": \"messages1\",\n    \"exchange\": \"allMessages\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bind-queue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bind-queue"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
