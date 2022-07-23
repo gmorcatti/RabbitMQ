@@ -5,11 +5,11 @@ This is not a real project or something that simulates one.
 
 ---
 
-## Autor
+## Author
 
 - Gabriel Morcatti - gabriel.morcatti@yahoo.com.br
 
-## Tecnologias Utilizadas
+## Used Technologies
 
 - RabbitMQ
 - NodeJs
@@ -18,11 +18,11 @@ This is not a real project or something that simulates one.
 - Docker
 - Docker-Compose
 
-## Rotas
+## Routes
 
 The file in project's root folder called "RabbitMQ.postman_collection.json" contains all routes with corresponding parameters.
 
-## Pré-requisitos
+## Prerequisites
 
 - NodeJs.
 - Docker e Docker-compose.
